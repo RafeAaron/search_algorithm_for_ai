@@ -20,16 +20,21 @@ Create 100 patients that are going to be assigned to nurses
 patients = []
 
 for i in range(100):
-    patients.append(Patient(random.randint(2, 10), False))
+    patients.append(Patient(random.randint(1, 20), False))
 
 AllocationSystem = NurseAllocationSystem(nurses, patients)
 
-nurses = AllocationSystem.allocatePatients()
+nurses = AllocationSystem.allocatePatientsBasic()
 
 """
     List all the nurses in ascending order
 """
-SortedNurses = AllocationSystem.sortAscending()
+SortedNurses = AllocationSystem.sortNursesAscending()
+SortedPatients = AllocationSystem.sortPatients()
 
 for i in range(20):
     print(SortedNurses[i])
+
+for i in range(len(patients)):
+    print(SortedPatients[i])
+

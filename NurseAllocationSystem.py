@@ -9,7 +9,7 @@ class NurseAllocationSystem:
         self.list_of_nurses = list_of_nurses
         self.list_of_patients = list_of_patients
 
-    def sortAscending(self):
+    def sortNursesAscending(self):
 
         num_nurses = len(self.list_of_nurses)
 
@@ -47,7 +47,7 @@ class NurseAllocationSystem:
     def getAllNurses(self):
         return self.list_of_nurses
     
-    def allocatePatients(self):
+    def allocatePatientsBasic(self):
         number_of_patients = len(self.list_of_patients)
         number_of_nurses = len(self.list_of_nurses)
 
@@ -56,3 +56,35 @@ class NurseAllocationSystem:
             self.list_of_nurses[i % number_of_nurses].setTotalWorkHours(self.list_of_patients[i].getTimeRequired())
 
         return self.list_of_nurses
+    
+    def sortPatients(self):
+
+        num_patients = len(self.list_of_patients)
+
+        for i in range(num_patients):
+
+            least = self.list_of_patients[i].getTimeRequired()
+            change = False
+            leastNurse = self.list_of_patients[i]
+            leastNurseIndex = i
+
+            for a in range(num_patients):
+                if i == a or a < i:
+                    continue
+
+                else:
+                    if self.list_of_patients[a].getTimeRequired() < least:
+                        least = self.list_of_patients[a].getTimeRequired()
+                        leastNurse = self.list_of_patients[a]
+                        leastNurseIndex = a
+                        change = True
+                
+            if change == False:
+                continue
+
+            else:
+                tempNurse = self.list_of_patients[i]
+                self.list_of_patients[i] = leastNurse
+                self.list_of_patients[leastNurseIndex] = tempNurse
+        
+        return self.list_of_patients
