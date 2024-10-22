@@ -1,3 +1,7 @@
+##Nurse Data Structure
+##Below is the data structure of the nurse as well as it's features
+##It only takes in an id and the rest is done internally
+
 class Nurse:
 
     def __init__(self, id):
@@ -18,6 +22,7 @@ class Nurse:
     def addPatient(self, patient):
         self.assignedPatients.append(patient)
         self.count += 1
+        self.setTotalWorkHours(patient.getTimeRequired())
 
     def count(self):
         return self.count

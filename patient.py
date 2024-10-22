@@ -1,3 +1,9 @@
+#Patient Data Structure
+#A patient is created with the time required to 
+#work on them specified as well as an 
+#assignment boolean that will be used to check
+#their assignment status
+
 class Patient:
     def __init__(self, timeRequired, isAssigned):
         self.workTimeRequired = timeRequired

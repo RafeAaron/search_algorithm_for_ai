@@ -1,3 +1,24 @@
+"""
+Program Name: AI allocation of patients to nurses
+Authors:
+    Nantumbwe Prossy K
+    Nakimbugwe Edith
+    Nejesa Sandrine
+    Opio George Micheal
+    Rubangakene Stuart
+
+Description:
+    A simple allocation program that illustrates how nurses can be 
+    allocated patients given that the time to work upon patients is
+    already known as well as their number
+
+Date: 21/10/2024
+"""
+
+#These are imports for the various data 
+#structures we have designed that are necessary
+#for the solving the problem
+
 from NurseAllocationSystem import NurseAllocationSystem
 from nurse import Nurse
 from patient import Patient
@@ -15,26 +36,28 @@ for i in range(20):
 
 """
 Create 100 patients that are going to be assigned to nurses
+All patients should have a random number of hours that they take to be worked on
 """
 
 patients = []
 
 for i in range(100):
-    patients.append(Patient(random.randint(1, 20), False))
+    patients.append(Patient(random.randint(1, 30), False))
 
+#Create an instance of the allocation system to allow us efficiently allocate
+#patients based on their workloads(Time taken to cater to a patient)
 AllocationSystem = NurseAllocationSystem(nurses, patients)
 
-nurses = AllocationSystem.allocatePatientsBasic()
+#Run an allocation to see the allocations that will be made
+#given the nurses present and the patients available
+nurses = AllocationSystem.allocatePatientsGreedyApproach()
 
 """
-    List all the nurses in ascending order
+    Sort all the nurses and patients in ascending order
+    Feel free to implement descending order
 """
 SortedNurses = AllocationSystem.sortNursesAscending()
-SortedPatients = AllocationSystem.sortPatients()
+SortedPatients = AllocationSystem.sortPatientsAscending()
 
-for i in range(20):
-    print(SortedNurses[i])
-
-for i in range(len(patients)):
-    print(SortedPatients[i])
-
+##Implement a for loop to view both the patients
+##And the nurses sorted in ascending order of duration

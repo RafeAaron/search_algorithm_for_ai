@@ -3,6 +3,9 @@ from patient import Patient
 
 import random
 
+##This is the class that caters for the
+##allocation of nurses and patients as well as
+##sorting methods for the classes
 class NurseAllocationSystem:
 
     def __init__(self, list_of_nurses, list_of_patients):
@@ -57,7 +60,7 @@ class NurseAllocationSystem:
 
         return self.list_of_nurses
     
-    def sortPatients(self):
+    def sortPatientsAscending(self):
 
         num_patients = len(self.list_of_patients)
 
@@ -87,4 +90,22 @@ class NurseAllocationSystem:
                 self.list_of_patients[i] = leastNurse
                 self.list_of_patients[leastNurseIndex] = tempNurse
         
+        return self.list_of_patients
+    
+    def allocatePatientsGreedyApproach(self):
+        for i in range(len(self.list_of_patients)):
+
+            nurseWithLeastWorkLoad = self.list_of_nurses[0]
+            nurseWithLeastWorkLoadIndex = 0
+
+            for a in range(len(self.list_of_nurses)):
+                if self.list_of_nurses[a].getTotalWorkHours() <= nurseWithLeastWorkLoad.getTotalWorkHours():
+                    nurseWithLeastWorkLoad = self.list_of_nurses[a]
+                    nurseWithLeastWorkLoadIndex = a
+
+                else:
+                    continue
+
+            self.list_of_nurses[nurseWithLeastWorkLoadIndex].addPatient(self.list_of_patients[i])
+
         return self.list_of_patients
