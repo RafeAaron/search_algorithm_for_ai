@@ -3,7 +3,7 @@ Program Name: AI allocation of patients to nurses
 Authors:
     Nantumbwe Prossy K
     Nakimbugwe Edith
-    Nejesa Sandrine
+    Nejesa Sandrine Lyton
     Opio George Micheal
     Rubangakene Stuart
 
